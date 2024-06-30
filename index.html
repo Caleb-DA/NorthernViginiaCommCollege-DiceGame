@@ -1,0 +1,184 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NorthernVirginiaCommCollege-DiceGame</title>
+</head>
+
+<body>
+
+    <!-- header of website layout -->
+    <div class="header">
+        <h1 style="color:white;font-size:250%">
+            CRAP SHOOT
+        </h1>
+    </div>
+
+    <!-- Content section of website layout -->
+    <div class="row">
+   <div class="columnA">
+    <h2>Game Rules</h2>
+<p> A pass line bet proceeds in the Game of Crap as follows: the first roll of the dice in a craps round is called the “come out roll.” </p>
+<p>Round 0</p>
+<p> A come out roll of 7 or 11 automatically wins, and a come out roll of 2, 3, or 12 automatically loses - End of Game</p>
+<p></p>
+<p>Round 1</p>
+<p> If 4, 5, 6, 8, 9, or 10 is rolled on the come out roll, that number becomes the Point. </p>
+<p> If the Point is rolled first, then the player wins the bet, or If a 7 is rolled first, then the player loses.</p> 
+<p>Repeat</p>
+<p>The player keeps rolling the dice until either 7 to lose or the Point is rolled to win.</p>     
+</div>
+    
+<div class="columnB">
+<h2>Game Board</h2>
+
+<img src="https://www.randomservices.org/random/games/CrapsTable.svg">
+
+</div>
+</div>  
+  
+<div class="rowC">
+<p>Do you think your are gonna be lucky today? Everybody deserves to win. Start Dices Roll by Clicking on 'Round0'</p>
+
+<h3>//Outcome of the Come out roll is...</h3>
+<h4 onclick="Round0(this)">Round0</h4>
+<p id="Won or Lose the Come out roll"></p>
+<h3>//You won or lose the Point in Round 1</h3>
+<h4 onclick="Round1(this)">Round1</h4>
+<p id="Won or Lose Point in Round 1"></p>    
+
+<h3>//You won or lose the Point in follow up Round(s)</h3>
+<h4 onclick="Repeat(this)">Repeat</h4>
+<p id="Won or Lose Point in next Round"></p>    
+    
+<img src="https://tse2.mm.bing.net/th?id=OIP.Tk-QAxB2aMiCJj2-qgCJUwHaE7&pid=Api" class="center">
+ </div>  
+</body>  
+</html>
+
+
+<style>
+* {
+            box-sizing: border-box;
+        }
+   body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #1f2937;
+    }
+        /* CSS property for header section */
+        .header {
+            background-color: #BDB76B;
+            padding: 12px;
+            text-align: center;
+        }
+       h1 {
+            color: #2F4F4F;
+            text-align: center;
+        }
+      /* CSS property for content section */
+      .columnA {
+      background-color: #F0F8FF;
+            float: left;
+            width: 50%;
+            padding-top: 15px;
+            padding-bottom: 145px;
+            text-align: justify;
+      }
+
+      .columnB {
+      background-color: #F5F5DC;
+            float: left;
+            width: 50%;
+            padding: 15px;
+            text-align: justify;
+        }
+        .rowC {
+        background-color: #F0E68C;
+            float: left;
+            width: 100%;
+            padding: 15px;
+            text-align: justify;
+        }   
+        
+        h2 {
+            color: #2F4F4F;
+            text-align: center;
+        }
+    .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 17%;
+    }
+     h3 {
+            color: #8F4F4F;
+            text-align: left;
+        }
+    h4  {
+            color: #5F9EA0;
+            text-align: left;
+        }
+
+     /* Media query to set website layout 
+            according to screen size */
+        @media screen and (max-width:600px) {
+
+            .columnA,
+            .columnB {
+                width: 50%;
+            }
+        }
+</style>
+
+
+<script>
+var round = 0;
+var point = 0;
+var tally = 0;
+
+function Round0(id) {
+dice1 = Math.floor(Math.random() * 6) + 1;				
+dice2 = Math.floor(Math.random() * 6) + 1;				
+tally = dice1 + dice2;
+point = dice1 + dice2;  
+if (tally === 7 || tally === 11) 	
+  document.getElementById("Won or Lose the Come out roll").innerHTML = "You won Come out roll, and the lucky dices throw are " + dice1 + "," + dice2 + "," + "and tally = " + tally + ">>>Game Stop!";
+else if (tally === 2 || tally === 3 || tally === 12) 			
+  document.getElementById("Won or Lose the Come out roll").innerHTML = "You lose Come out roll, and the crappy dices throw are " + dice1 + "," + dice2 + "," + "and tally = " + tally + ">>>Game Stop!";		
+  else 
+  document.getElementById("Won or Lose the Come out roll").innerHTML = "You neither win or lose Come out roll, and the dices throw are " + dice1 + "," + dice2 + "," + "and Point = " + point + ">>>Game Continues";	
+}
+
+function Round1(id) {
+round = 1;
+dice1 = Math.floor(Math.random() * 6) + 1;				
+dice2 = Math.floor(Math.random() * 6) + 1;				
+tally = dice1 + dice2;
+if (tally === point)
+document.getElementById("Won or Lose Point in Round 1").innerHTML = "You won the Point in Round 1, and the dices = " + dice1 + "," + dice2 + "," + "and point = " + point + ">>>Game Stops!";
+else if (tally === 7)
+document.getElementById("Won or Lose Point in Round 1").innerHTML = "You lose the Point in Round 1, and the dices = " + dice1 + "," + dice2 + "," + "and point = " + point + ">>>Game Stops!";
+     else
+document.getElementById("Won or Lose Point in Round 1").innerHTML = "You neither won or lose the Point in Round 1, and the dices = " + dice1 + "," + dice2 + "," + "and tally = " + tally + ">>>Continue to next Round!";
+}
+
+
+function Repeat(id) {
+round = round + 1;
+dice1 = Math.floor(Math.random() * 6) + 1;				
+dice2 = Math.floor(Math.random() * 6) + 1;				
+tally = dice1 + dice2;
+if (tally === point)
+document.getElementById("Won or Lose Point in next Round").innerHTML = "You won the Point in follow up Round# =" + round + ", dices =" + dice1 + "," + dice2 + "," + "and tally = " + point + ">>>Game Stops!";
+else if (tally === 7)
+document.getElementById("Won or Lose Point in next Round").innerHTML = "You lose the Point in follow up Round# =" + round + ", dices =" + dice1 + "," + dice2 + ","  + "and tally = " + tally + ">>>Game Stops!";
+else
+document.getElementById("Won or Lose Point in next Round").innerHTML = "You neither win or lose the Point in follow up Round# =" + round + ", dices =" + dice1 + "," + dice2 + ","  + "and tally = " + tally + ">>>Continue to next Round!";
+}
+
+</script>
